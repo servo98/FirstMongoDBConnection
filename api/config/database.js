@@ -23,7 +23,7 @@ db.on('disconnected', () => {
 });
 
 db.on('reconnected', () => {
-  console.log('Reconectado a la base de datos');
+  console.log('🙏🏽 Reconectado a la base de datos');
 });
 
 export default function init() {
