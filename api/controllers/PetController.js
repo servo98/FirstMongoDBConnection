@@ -15,9 +15,14 @@ const createPet = async (req, res) => {
       pet: newPet,
     });
   } catch (error) {
-    return res.status(500).json({
+    const result = {
       msg: 'Ha ocurrido un error al guardar la mascota',
-    });
+      error:
+        process.env.NODE_ENV == 'local' || process.env.NODE_ENV == 'development'
+          ? error
+          : null,
+    };
+    return res.status(500).json(result);
   }
 };
 
