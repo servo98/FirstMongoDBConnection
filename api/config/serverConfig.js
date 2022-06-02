@@ -1,8 +1,14 @@
 import dotenv from 'dotenv';
 
-dotenv.config();
+const enviroment = process.env.NODE_ENV;
 
-export default {
+console.log(`Cargando variables del ambiente ${enviroment}`);
+
+dotenv.config({
+  path: `.env.${enviroment}`,
+});
+
+const config = {
   server: {
     PORT: process.env.PORT,
   },
@@ -14,3 +20,8 @@ export default {
     NAME: process.env.DB_NAME,
   },
 };
+
+if (enviroment === 'local') {
+  console.log(config);
+}
+export default config;
