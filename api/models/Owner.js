@@ -1,5 +1,12 @@
 import mongoose from 'mongoose';
 
+const petSchema = new mongoose.Schema({
+  edad: Number,
+  nombre: String,
+  raza: String,
+  tipo: String,
+});
+
 const ownerSchema = new mongoose.Schema({
   nacimiento: Date,
   nombre: {
@@ -13,12 +20,7 @@ const ownerSchema = new mongoose.Schema({
     required: [true, 'Correo es obligatorio'],
     trim: true,
   },
-  mascotas: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Pet',
-    },
-  ],
+  mascotas: [petSchema],
 });
 
 export default mongoose.model('Owner', ownerSchema);
